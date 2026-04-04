@@ -28,6 +28,11 @@ RUN cave resolve -x \
     dev-lang/rust && \
     rm -rf /var/cache/paludis/distfiles/*
 
+RUN echo 'app-editors/vim build_options: -recommended_tests' >> /etc/paludis/options.conf && \
+    cave resolve -x \
+    app-editors/vim && \
+    rm -rf /var/cache/paludis/distfiles/*
+
 # Bootstrap pass 1: install cycle members with circular features disabled
 RUN echo 'dev-libs/glib -gobject-introspection' >> /etc/paludis/options.conf && \
     echo 'media-libs/freetype -harfbuzz' >> /etc/paludis/options.conf && \
